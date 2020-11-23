@@ -1,0 +1,97 @@
+<button mat-raised-button routerLink="" class="back-button">Go back</button>
+
+<div class="container">
+
+
+    <!-- [hidden]="success" -->
+    <form [formGroup]="myForm" (ngSubmit)="addCard()" class="main-form">
+        <mat-toolbar>
+            <h1>Credit Card Payment</h1>
+        </mat-toolbar>
+        <hr>
+        <mat-form-field>
+            <input matInput placeholder="Card number" [(ngModel)]="newCreditCard.card_number" formControlName="cardN" autocomplete="off">
+
+            <mat-error *ngIf="cardN.invalid && cardN.touched" class="has-text-danger">
+                Your must fill this section
+            </mat-error>
+            <mat-hint align="start">Card number format: xxxx-xxxx-xxxx</mat-hint>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+            <input matInput placeholder="Card holder" [(ngModel)]="newCreditCard.card_holder" formControlName="cardH" autocomplete="off">
+
+            <mat-hint align="start">Must contains only letters.</mat-hint>
+            <mat-error *ngIf="cardH.invalid && cardH.touched" class="has-text-danger">
+                Your must fill this section
+            </mat-error>
+
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+            <input matInput placeholder="Expiration date" [(ngModel)]="newCreditCard.expiration_date" formControlName="cardED">
+
+            <mat-hint align="start">Date format: MM/YY</mat-hint>
+
+            <mat-error *ngIf="cardED.invalid && cardED.touched" class="has-text-danger">
+                Your must fill this section
+            </mat-error>
+
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Security code" [(ngModel)]="newCreditCard.security_code" formControlName="securityCode">
+
+            <mat-hint align="start">Must have 3 digits.</mat-hint>
+            <mat-error *ngIf="securityCode.invalid && securityCode.touched" class="has-text-danger">
+                Your must fill this section
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Amount" [(ngModel)]="newCreditCard.amount" formControlName="cardAmount">
+
+            <mat-hint align="start">Must have only digits.</mat-hint>
+            <mat-error *ngIf="cardAmount.invalid && cardAmount.touched" class="has-text-danger">
+                Your must fill this section
+            </mat-error>
+
+        </mat-form-field>
+
+
+        <mat-checkbox formControlName="agree" color="primary" class="checkbox-agree">I Agree to Terms</mat-checkbox>
+
+        <hr>
+
+        <button mat-raised-button [disabled]="myForm.invalid" color="primary" type="submit">Let's Do it!</button>
+
+
+    </form>
+
+
+    <div class="cards-list">
+        <h1>Credit cards</h1>
+
+        <ol class="gradient-list">
+            <li *ngFor="let card of creditCard | async">
+                {{ "Card number: " + card.card_number + " Card holder: " + card.card_holder + " Expiration date: " + card.expiration_date + " Security code: " + card.security_code + " Card amount: " + card.amount}}
+            </li>
+        </ol>
+    </div>
+
+
+
+
+
+
+
+    <div *ngIf="success" class="notification is-success">
+        Yay! We received your submission
+    </div>
+</div>

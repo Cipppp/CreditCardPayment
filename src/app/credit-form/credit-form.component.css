@@ -1,0 +1,62 @@
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+    h1,
+    button,
+    mat-checkbox {
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    
+    mat-form-field {
+        display: block;
+        font-family: 'Josefin Sans', sans-serif !important;
+    }
+    
+    .container {
+        padding: 0rem 2rem 0rem 2rem;
+        text-align: center;
+    }
+    
+    hr {
+        width: 10%
+    }
+    
+    ol.gradient-list>li,
+    ol.gradient-list>li::before {
+        box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+    }
+    
+    .cards-list {
+        display: block;
+        margin: 0 auto;
+        max-width: 60rem;
+        padding: 1rem;
+    }
+    
+    ol.gradient-list {
+        counter-reset: gradient-counter;
+        list-style: none;
+        margin: 1.75rem 0;
+        padding-left: 3rem;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+    
+    ol.gradient-list>li {
+        background: white;
+        border-radius: 1rem 1rem 1rem 1rem;
+        counter-increment: gradient-counter;
+        margin-top: 1rem;
+        min-height: 1rem;
+        padding: 1rem 1rem 1rem 1rem;
+        position: relative;
+    }
+    
+    ol.gradient-list>li::before {
+        content: counter(gradient-counter);
+        font: 900 1.5em/1 "Josefin Sans";
+        padding: 0.125em 0.25em;
+        z-index: 1;
+        border-radius: 1rem 1rem 1rem 1rem;
+    }
+    
+    .back-button {
+        margin: 1rem;
+    }
